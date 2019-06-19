@@ -63,48 +63,55 @@ const config = {
             {
                 test: reScript,
                 include: [SRC_DIR, resolvePath("tools")],
-                loader: "babel-loader",
-                options: {
-                    // https://github.com/babel/babel-loader#options
-                    cacheDirectory: isDebug,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            // https://github.com/babel/babel-loader#options
+                            cacheDirectory: isDebug,
 
-                    // https://babeljs.io/docs/usage/options/
-                    babelrc: false,
-                    configFile: false,
-                    presets: [
-                        // A Babel preset that can automatically determine the Babel plugins and polyfills
-                        // https://github.com/babel/babel-preset-env
-                        [
-                            "@babel/preset-env",
-                            {
-                                targets: {
-                                    browsers: pkg.browserslist,
-                                },
-                                forceAllTransforms: !isDebug, // for UglifyJS
-                                modules: false,
-                                useBuiltIns: false,
-                                debug: false,
-                            },
-                        ],
-                        // JSX
-                        // https://github.com/babel/babel/tree/master/packages/babel-preset-react
-                        ["@babel/preset-react", { development: isDebug }],
-
-                        // TypeScript
-                        "@babel/preset-typescript",
-                    ],
-                    plugins: [
-                        // Experimental ECMAScript proposals
-                        "@babel/plugin-proposal-class-properties",
-                        "@babel/plugin-syntax-dynamic-import",
-                        // Treat React JSX elements as value types and hoist them to the highest scope
-                        // https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-constant-elements
-                        ...(isDebug ? [] : ["@babel/transform-react-constant-elements"]),
-                        // Replaces the React.createElement function with one that is more optimized for production
-                        // https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-inline-elements
-                        ...(isDebug ? [] : ["@babel/transform-react-inline-elements"]),
-                    ],
-                },
+                            // https://babeljs.io/docs/usage/options/
+                            babelrc: false,
+                            configFile: false,
+                            presets: [
+                                // A Babel preset that can automatically determine the Babel plugins and polyfills
+                                // https://github.com/babel/babel-preset-env
+                                [
+                                    "@babel/preset-env",
+                                    {
+                                        targets: {
+                                            browsers: pkg.browserslist,
+                                        },
+                                        forceAllTransforms: !isDebug, // for UglifyJS
+                                        modules: false,
+                                        useBuiltIns: false,
+                                        debug: false,
+                                    },
+                                ],
+                                // JSX
+                                // https://github.com/babel/babel/tree/master/packages/babel-preset-react
+                                ["@babel/preset-react", { development: isDebug }],
+                            ],
+                            plugins: [
+                                // Experimental ECMAScript proposals
+                                "@babel/plugin-proposal-class-properties",
+                                "@babel/plugin-syntax-dynamic-import",
+                                // Treat React JSX elements as value types and hoist them to the highest scope
+                                // https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-constant-elements
+                                ...(isDebug ? [] : ["@babel/transform-react-constant-elements"]),
+                                // Replaces the React.createElement function with one that is more optimized for production
+                                // https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-inline-elements
+                                ...(isDebug ? [] : ["@babel/transform-react-inline-elements"]),
+                            ],
+                        },
+                    },
+                    {
+                        loader: "ts-loader",
+                        options: {
+                            transpileOnly: true,
+                        },
+                    },
+                ],
             },
 
             // Rules for GraphQL
@@ -412,28 +419,36 @@ const serverConfig = {
 
         rules: overrideRules(config.module.rules, (rule: any) => {
             // Override babel-preset-env configuration for Node.js
-            if (rule.loader === "babel-loader") {
+            if (!rule.loader && rule.use && Array.isArray(rule.use)) {
+                const rules: webpack.RuleSetRule[] = rule.use;
                 return {
                     ...rule,
-                    options: {
-                        ...rule.options,
-                        presets: rule.options.presets.map((preset: any) =>
-                            preset[0] !== "@babel/preset-env"
-                                ? preset
-                                : [
-                                      "@babel/preset-env",
-                                      {
-                                          targets: {
-                                              // @ts-ignore
-                                              node: pkg.engines.node.match(/(\d+\.?)+/)[0],
-                                          },
-                                          modules: false,
-                                          useBuiltIns: false,
-                                          debug: false,
-                                      },
-                                  ],
-                        ),
-                    },
+                    use: rules.map((r: any) => {
+                        if (r.loader !== "babel-loader") return r;
+
+                        return {
+                            ...r,
+                            options: {
+                                ...r.options,
+                                presets: r.options.presets.map((preset: any) =>
+                                    preset[0] !== "@babel/preset-env"
+                                        ? preset
+                                        : [
+                                              "@babel/preset-env",
+                                              {
+                                                  targets: {
+                                                      // @ts-ignore
+                                                      node: pkg.engines.node.match(/(\d+\.?)+/)[0],
+                                                  },
+                                                  modules: false,
+                                                  useBuiltIns: false,
+                                                  debug: false,
+                                              },
+                                          ],
+                                ),
+                            },
+                        };
+                    }),
                 };
             }
 
