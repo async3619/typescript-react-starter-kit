@@ -18,6 +18,10 @@ import webpackConfig from "./webpack.config";
 import run, { format } from "./run";
 import clean from "./clean";
 
+interface EnhancedApp {
+    handle(req: Request, res: Response): express.Express;
+}
+
 const isDebug = !process.argv.includes("--release");
 
 // https://webpack.js.org/configuration/watch/#watchoptions
@@ -101,7 +105,7 @@ async function start() {
     // https://github.com/glenjamin/webpack-hot-middleware
     server.use(webpackHotMiddleware(clientCompiler, { log: false }));
 
-    let app: Application;
+    let app: EnhancedApp;
     let hot: any;
     function reloadApp() {
         delete require.cache[require.resolve("../build/server")];
