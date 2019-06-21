@@ -7,15 +7,9 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-@import '../variables.css';
-
-.root {
-    background: #282c34;
-    color: #fff;
-}
-
-.container {
-    margin: 0 auto;
-    padding: 2rem 0;
-    max-width: 1200px;
-}
+$font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif !default;
+$max-content-width: 1200px !default;
+$screen-xs-min: 480px !default;
+$screen-sm-min: 768px !default;
+$screen-md-min: 992px !default;
+$screen-lg-min: 1200px !default;
