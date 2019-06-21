@@ -14,19 +14,16 @@ import useStyles from "isomorphic-style-loader/useStyles";
 import normalizeCss from "normalize.css";
 import s from "./Layout.css";
 import Header from "../Header";
-import Feedback from "../Feedback";
-import Footer from "../Footer";
 
 interface PropTypes {}
 
 const Layout: FunctionComponent<PropTypes> = ({ children }) => {
     useStyles(normalizeCss, s);
+
     return (
         <div>
             <Header />
             {children}
-            <Feedback />
-            <Footer />
         </div>
     );
 };
