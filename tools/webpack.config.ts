@@ -9,11 +9,16 @@
 
 import fs from "fs";
 import path from "path";
+import resolve from "resolve";
 import webpack from "webpack";
 import WebpackAssetsManifest from "webpack-assets-manifest";
 import nodeExternals from "webpack-node-externals";
 import cssnano from "cssnano";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+// @ts-ignore
+import typescriptFormatter from "react-dev-utils/typescriptFormatter";
+import eslintFormatter from "react-dev-utils/eslintFormatter";
 import overrideRules from "./lib/overrideRules";
 import pkg from "../package.json";
 import postcssConfig from "./postcss.config";
@@ -22,6 +27,8 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const resolvePath = (...args: string[]) => path.resolve(ROOT_DIR, ...args);
 const SRC_DIR = resolvePath("src");
 const BUILD_DIR = resolvePath("build");
+const NODE_MODULES = resolvePath("node_modules");
+const PNP_TS = resolvePath(__dirname, "lib", "pnp-ts.js");
 
 const isDebug = !process.argv.includes("--release");
 const isVerbose = process.argv.includes("--verbose");
@@ -59,6 +66,21 @@ const config = {
         strictExportPresence: true,
 
         rules: [
+            {
+                test: reScript,
+                enforce: "pre",
+                use: [
+                    {
+                        loader: "eslint-loader",
+                        options: {
+                            formatter: eslintFormatter,
+                            eslintPath: require.resolve("eslint"),
+                            ignore: false,
+                        },
+                    },
+                ],
+            },
+
             // Rules for JS / JSX
             {
                 test: reScript,
@@ -476,6 +498,28 @@ const serverConfig = {
     ],
 
     plugins: [
+        new ForkTsCheckerWebpackPlugin({
+            typescript: resolve.sync("typescript", {
+                basedir: NODE_MODULES,
+            }),
+            async: isDebug,
+            useTypescriptIncrementalApi: true,
+            checkSyntacticErrors: true,
+            resolveModuleNameModule: (process.versions as any).pnp ? PNP_TS : undefined,
+            resolveTypeReferenceDirectiveModule: (process.versions as any).pnp ? PNP_TS : undefined,
+            tsconfig: resolvePath("tsconfig.json"),
+            reportFiles: [
+                "**",
+                "!**/__tests__/**",
+                "!**/?(*.)(spec|test).*",
+                "!**/src/setupProxy.*",
+                "!**/src/setupTests.*",
+            ],
+            watch: SRC_DIR,
+            // The formatter is invoked directly in WebpackDevServerUtils during development
+            formatter: !isDebug ? typescriptFormatter : undefined,
+        }),
+
         // Define free variables
         // https://webpack.js.org/plugins/define-plugin/
         new webpack.DefinePlugin({
