@@ -21,6 +21,8 @@ module.exports = {
     },
 
     rules: {
+        "class-methods-use-this": "off",
+
         // Forbid the use of extraneous packages
         // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
         "import/no-extraneous-dependencies": ["error", { packageDir: "." }],
@@ -106,7 +108,7 @@ module.exports = {
                 vars: "local",
                 args: "after-used",
                 ignoreRestSiblings: false,
-                argsIgnorePattern: "^_",
+                argsIgnorePattern: "(^_|returns|type)",
             },
         ],
 

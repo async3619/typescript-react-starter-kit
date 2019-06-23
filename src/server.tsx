@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import path from "path";
 import express, { NextFunction, Request, Response } from "express";
 import cookieParser from "cookie-parser";
@@ -7,7 +8,7 @@ import jwt from "jsonwebtoken";
 import React from "react";
 import ReactDOM from "react-dom/server";
 import PrettyError from "pretty-error";
-import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
 import { getDataFromTree } from "react-apollo";
 import createApolloClient from "./core/createApolloClient/createApolloClient.server";
 import App from "./components/App";
@@ -17,7 +18,8 @@ import errorPageStyle from "./routes/error/ErrorPage.css";
 import passport from "./passport";
 import router from "./router";
 import models from "./data/models";
-import schema from "./data/schema";
+import buildSchema from "./graphql";
+
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 // @ts-ignore
 import chunks from "./chunk-manifest.json"; // eslint-disable-line import/no-unresolved
@@ -28,6 +30,8 @@ process.on("unhandledRejection", (reason, p) => {
     // send entire app down. Process manager will restart it
     process.exit(1);
 });
+
+const schema = buildSchema();
 
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
@@ -104,7 +108,7 @@ app.get(
 // https://github.com/graphql/express-graphql#options
 
 const server = new ApolloServer({
-    ...schema,
+    schema,
     uploads: false,
     introspection: __DEV__,
     playground: __DEV__,
@@ -129,7 +133,7 @@ app.get("*", async (req, res, next) => {
 
         const apolloClient = createApolloClient(
             {
-                schema: makeExecutableSchema(schema),
+                schema,
                 // This is a context consumed in GraphQL Resolvers
                 context: { req },
             },
