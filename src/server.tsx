@@ -90,9 +90,7 @@ app.get("*", async (req, res, next) => {
                 // This is a context consumed in GraphQL Resolvers
                 context: { req },
             },
-            {
-                user: req.user || null,
-            },
+            {},
         );
 
         // Global (context) variables that can be easily accessed from any React component
