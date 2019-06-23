@@ -6,7 +6,7 @@ import Home from "./Home";
 
 async function action() {
     return {
-        title: "React Starter Kit",
+        title: "Typescript React Starter Kit",
         chunks: ["home"],
         component: (
             <Layout fullWidth>

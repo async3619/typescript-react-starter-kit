@@ -25,7 +25,7 @@ const routes: Route = {
         const route = await next();
 
         // Provide default values for title, description etc.
-        route.title = `${route.title || "Untitled Page"} - www.reactstarterkit.com`;
+        route.title = `${route.title || "Untitled Page"} - Typescript React Starter Kit`;
         route.description = route.description || "";
 
         return route;

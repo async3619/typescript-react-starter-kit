@@ -8,7 +8,7 @@ import { createPath, Location } from "history";
 import App from "./components/App";
 import history from "./history";
 import { updateMeta } from "./DOMUtils";
-import createApolloClient from "./core/createApolloClient/createApolloClient.client";
+import createApolloClient from "./graphql/createApolloClient/createApolloClient.client";
 import router from "./router";
 import { AppContextTypes } from "./context";
 
