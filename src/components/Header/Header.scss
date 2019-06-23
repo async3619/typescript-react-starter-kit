@@ -38,6 +38,8 @@
         display: flex;
         align-items: stretch;
 
+        pointer-events: none;
+
         .bg-wrapper {
             display: flex;
             justify-content: flex-end;
