@@ -9,7 +9,7 @@ async function action() {
         title: "React Starter Kit",
         chunks: ["home"],
         component: (
-            <Layout>
+            <Layout fullWidth>
                 <Home />
             </Layout>
         ),

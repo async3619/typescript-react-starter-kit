@@ -1,0 +1,16 @@
+.root {
+    margin: 0;
+    padding: 0;
+
+    > .title {
+        margin: 0 0 1.2rem;
+    }
+
+    > .paragraph {
+        margin: 0;
+
+        letter-spacing: 0.025em;
+        line-height: 1.5;
+        font-weight: normal;
+    }
+}

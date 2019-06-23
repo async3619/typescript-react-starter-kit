@@ -59,6 +59,7 @@ const config = {
         rules: [
             {
                 test: reScript,
+                exclude: /__generated__/g,
                 enforce: "pre",
                 use: [
                     {
@@ -66,7 +67,7 @@ const config = {
                         options: {
                             formatter: eslintFormatter,
                             eslintPath: require.resolve("eslint"),
-                            ignore: false,
+                            ignore: true,
                         },
                     },
                 ],
@@ -289,6 +290,7 @@ const config = {
             "@components": resolvePath("src", "components"),
             "@routes": resolvePath("src", "routes"),
             "@res": resolvePath("res"),
+            "@queries/*": resolvePath("src", "graphql", "queries"),
         },
     },
 

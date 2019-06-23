@@ -1450,7 +1450,7 @@
     import-from "3.0.0"
     tslib "1.9.3"
 
-"@graphql-codegen/typescript-operations@^1.2.1":
+"@graphql-codegen/typescript-operations@1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-operations/-/typescript-operations-1.2.1.tgz#54d3e5b34c7b436a13c74e986550ecbe547deb90"
   integrity sha512-u7JcggzB/DzkeLJgcoiBI9VnFt22fR9KUFk3z8SM/FQOCLTLsSRhhtCo62gUCIHrsUlTiWpVSh3+pWWvwBVWOQ==
@@ -1460,7 +1460,7 @@
     "@graphql-codegen/visitor-plugin-common" "1.2.1"
     tslib "1.9.3"
 
-"@graphql-codegen/typescript-react-apollo@^1.2.1":
+"@graphql-codegen/typescript-react-apollo@1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-react-apollo/-/typescript-react-apollo-1.2.1.tgz#4e07c1c83cd0df27c935331b30712a0c5a15900b"
   integrity sha512-2Mtsfo8++0P1ODAg4zzy3+0J+TeGHGdEhSDvCPovZf6nok9OD95p9NjNIBaUEh65iMRLDUVzqsav7MGpn6vc2w==

@@ -62,8 +62,9 @@
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "@graphql-codegen/cli": "^1.2.1",
-        "@graphql-codegen/typescript-operations": "^1.2.1",
-        "@graphql-codegen/typescript-react-apollo": "^1.2.1",
+        "@graphql-codegen/typescript": "1.2.1",
+        "@graphql-codegen/typescript-operations": "1.2.1",
+        "@graphql-codegen/typescript-react-apollo": "1.2.1",
         "@svgr/webpack": "^4.3.0",
         "@types/babel-core": "^6.25.6",
         "@types/babel__core": "^7.1.2",
@@ -206,7 +207,6 @@
         "fix-js": "yarn run lint-js --fix",
         "fix-css": "yarn run lint-css --fix",
         "fix": "yarn run fix-js && yarn run fix-css",
-        "codegen": "ts-node --project tsconfig.node.json tools/run codegen",
         "test": "tsc && jest",
         "test-watch": "yarn run test --watch --notify",
         "test-cover": "yarn run test --coverage",
@@ -219,6 +219,8 @@
         "deploy": "ts-node --project tsconfig.node.json tools/run deploy",
         "render": "ts-node --project tsconfig.node.json tools/run render",
         "serve": "ts-node --project tsconfig.node.json tools/run runServer",
-        "start": "ts-node --project tsconfig.node.json tools/run start"
+        "start": "ts-node --project tsconfig.node.json tools/run start",
+        "codegen": "graphql-codegen --config codegen.yml",
+        "codegen-watch": "graphql-codegen --config codegen.yml --watch"
     }
 }

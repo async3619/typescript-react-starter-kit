@@ -1,0 +1,4 @@
+query Lorem {
+    sentence(wordCount: 4)
+    paragraph(sentenceCount: 8)
+}

@@ -1,0 +1,50 @@
+.root {
+    margin: 0;
+    padding: 2.4rem 0;
+
+    .lorems {
+        padding: 6rem 0 8.4rem;
+
+        > .wrapper {
+            display: flex;
+
+            > .block {
+                padding: 0 1.2rem;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    .right,
+    .left {
+        margin: 0;
+        padding: 8.4rem 0;
+
+        .title {
+            margin: 0 0 1.2rem;
+        }
+
+        .paragraph {
+            margin: 0;
+
+            letter-spacing: 0.025em;
+            line-height: 1.5;
+            font-weight: normal;
+        }
+    }
+
+    .right {
+        background: #efefef;
+    }
+
+    .left {
+        padding-bottom: 6rem;
+    }
+}
