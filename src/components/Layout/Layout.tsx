@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from "react";
 import useStyles from "isomorphic-style-loader/useStyles";
 
+import Header from "@components/Header";
+
 // external-global styles must be imported in your JS.
 import normalizeCss from "normalize.css";
-
-import Header from "../Header";
-
 import s from "./Layout.scss";
 
 interface PropTypes {}

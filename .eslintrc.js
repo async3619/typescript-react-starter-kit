@@ -110,6 +110,9 @@ module.exports = {
             },
         ],
 
+        "css-modules/no-unused-class": [2, { camelCase: true }],
+        "css-modules/no-undef-class": [2, { camelCase: true }],
+
         // Type variables by Codegen can not be camelcase.
         camelcase: "off",
     },

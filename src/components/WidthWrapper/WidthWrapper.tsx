@@ -1,7 +1,7 @@
 import React from "react";
 import useStyles from "isomorphic-style-loader/useStyles";
 
-import s from "./width-wrapper.scss";
+import s from "./WidthWrapper.scss";
 
 interface Props {
     children: React.ReactNode;

@@ -65,4 +65,10 @@ declare module "*.graphql" {
     /* eslint import/export:0 */
     export default d;
 }
+declare module "*.svg" {
+    interface SvgrComponent extends React.FunctionComponent<React.SVGAttributes<SVGElement>> {}
+
+    const value: SvgrComponent;
+    export default value;
+}
 declare module "!isomorphic-style-loader!*";

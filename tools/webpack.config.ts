@@ -172,6 +172,7 @@ const config = {
                             // CSS Loader https://github.com/webpack/css-loader
                             importLoaders: 1,
                             sourceMap: isDebug,
+                            localsConvention: "dashesOnly",
                             // CSS Modules https://github.com/css-modules/css-modules
                             modules: {
                                 localIdentName: isDebug ? "[name]-[local]-[hash:base64:5]" : "[hash:base64:5]",
@@ -232,6 +233,12 @@ const config = {
                         ],
                     },
 
+                    {
+                        issuer: { not: [reStyle] },
+                        test: /\.svg$/,
+                        loader: "@svgr/webpack",
+                    },
+
                     // Or return public URL to image resource
                     {
                         loader: "file-loader",
@@ -278,6 +285,11 @@ const config = {
 
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"],
+        alias: {
+            "@components": resolvePath("src", "components"),
+            "@routes": resolvePath("src", "routes"),
+            "@res": resolvePath("res"),
+        },
     },
 
     resolveLoader: {
