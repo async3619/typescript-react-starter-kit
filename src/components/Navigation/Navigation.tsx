@@ -21,7 +21,7 @@ const Navigation = () => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://github.com/async3619/react-starter-kit"
+                            href="https://github.com/async3619/typescript-react-starter-kit"
                         >
                             GitHub
                         </a>
