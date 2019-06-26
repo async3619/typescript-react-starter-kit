@@ -50,6 +50,11 @@ module.exports = {
     // like images or styles with a single module.
     moduleNameMapper: {
         "\\.(css|less|styl|scss|sass|sss)$": "identity-obj-proxy",
+        "^@components(.*)$": "<rootDir>/src/components$1",
+        "^@routes(.*)$": "<rootDir>/src/routes$1",
+        "^@res(.*)$": "<rootDir>/res$1",
+        "^@queries(.*)$": "<rootDir>/src/data/queries$1",
+        "^@generated(.*)$": "<rootDir>/src/__generated__$1",
     },
 
     // modulePathIgnorePatterns: // [array<string>]
