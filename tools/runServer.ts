@@ -1,3 +1,6 @@
+/* eslint-disable spaced-comment */
+/// <reference path="../typings/index.d.ts" />
+
 import path from "path";
 import cp, { ChildProcess } from "child_process";
 import webpackConfig from "./webpack.config";

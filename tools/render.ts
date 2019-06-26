@@ -1,3 +1,6 @@
+/* eslint-disable spaced-comment */
+/// <reference path="../typings/index.d.ts" />
+
 import path from "path";
 import fetch from "node-fetch";
 import { writeFile, makeDir } from "./lib/fs";
@@ -12,15 +15,7 @@ import runServer from "./runServer";
 //   '/page/name',  // => build/public/page/name.html
 //   '/page/name/', // => build/public/page/name/index.html
 // ];
-const routes = [
-    "/",
-    "/contact",
-    "/login",
-    "/register",
-    "/about",
-    "/privacy",
-    "/404", // https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/
-];
+const routes: string[] = [];
 
 async function render() {
     const server = await runServer();
