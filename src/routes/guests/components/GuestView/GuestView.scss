@@ -1,0 +1,43 @@
+.root {
+    padding: 2.4rem;
+
+    font-size: 1.8rem;
+    font-weight: normal;
+
+    .description {
+        margin: 0 0 1.2rem;
+
+        display: flex;
+
+        font-size: 1.4rem;
+
+        color: #666;
+
+        > span,
+        > time {
+            display: block;
+            position: relative;
+
+            &:not(:last-child) {
+                padding-right: 3.6rem;
+
+                &:after {
+                    content: "";
+
+                    width: 2.4rem;
+                    height: 1px;
+
+                    position: absolute;
+                    top: 50%;
+                    right: 0.6rem;
+
+                    background: #AAA;
+                }
+            }
+        }
+    }
+
+    &:nth-child(odd) {
+        background: #eaeaea;
+    }
+}

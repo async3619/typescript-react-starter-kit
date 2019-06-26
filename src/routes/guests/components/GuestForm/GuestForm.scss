@@ -1,0 +1,61 @@
+.root {
+    margin-bottom: 3.6rem;
+
+    .row {
+        margin: 0 0 1.2rem;
+
+        display: flex;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    .input {
+        min-width: 24rem;
+
+        margin: 0 1.2rem 0 0;
+        padding: 0.8rem;
+        border: 1px solid #aaa;
+
+        display: flex;
+    }
+
+    .textarea {
+        width: 100%;
+        min-height: 100px;
+
+        margin: 0;
+        padding: 0.8rem;
+        border: 1px solid #aaa;
+
+        display: block;
+
+        resize: vertical;
+    }
+
+    .button {
+        width: 100%;
+
+        margin: 0;
+        padding: 0.8rem 1.2rem;
+        border: 0;
+
+        display: block;
+
+        color: white;
+        background: #007acc;
+
+        transition: background-color 0.1s ease;
+
+        cursor: pointer;
+
+        &:hover {
+            background: darken(#007acc, 5%);
+        }
+
+        &:active {
+            background: darken(#007acc, 10%);
+        }
+    }
+}

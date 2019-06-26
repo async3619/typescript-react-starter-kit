@@ -12,6 +12,10 @@ const routes: Route = {
             path: "",
             load: () => import(/* webpackChunkName: 'home' */ "./home"),
         },
+        {
+            path: "/guests",
+            load: () => import(/* webpackChunkName: 'guests' */ "./guests"),
+        },
 
         // Wildcard routes, e.g. { path: '(.*)', ... } (must go last)
         {

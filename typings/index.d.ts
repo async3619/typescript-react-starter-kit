@@ -1,5 +1,6 @@
 // Declare globals
 // eslint-disable-next-line no-unused-vars
+
 declare const __DEV__: boolean;
 
 // Extend globals
@@ -9,6 +10,14 @@ interface Window {
 }
 interface NodeModule {
     hot: any;
+}
+
+declare module NodeJS {
+    import { Connection } from "typeorm";
+
+    interface Global {
+        connection?: Connection;
+    }
 }
 
 // Extend existing modules

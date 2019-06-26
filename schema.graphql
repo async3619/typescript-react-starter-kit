@@ -2,9 +2,33 @@
 
 schema {
     query: Query
+    mutation: Mutation
+}
+
+type GuestBookItem {
+    content: String!
+    createdAt: Timestamp!
+    id: Int!
+    name: String!
+    updatedAt: Timestamp!
+}
+
+type Mutation {
+    writeGuestBook(data: WriteGuestBookInput!): GuestBookItem!
 }
 
 type Query {
+    guestBooks(count: Int!, index: Int = 0): [GuestBookItem!]!
     paragraph(sentenceCount: Int!): String!
     sentence(wordCount: Int!): String!
 }
+
+input WriteGuestBookInput {
+    content: String!
+    name: String!
+    password: String!
+}
+
+
+"The javascript `Date` as integer. Type represents date and time as number of milliseconds from start of UNIX epoch."
+scalar Timestamp

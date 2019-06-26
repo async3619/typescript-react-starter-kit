@@ -21,6 +21,7 @@ module.exports = {
     },
 
     rules: {
+        "lines-between-class-members": "off",
         "class-methods-use-this": "off",
 
         // Forbid the use of extraneous packages
@@ -108,7 +109,7 @@ module.exports = {
                 vars: "local",
                 args: "after-used",
                 ignoreRestSiblings: false,
-                argsIgnorePattern: "(^_|returns|type)",
+                argsIgnorePattern: "(^_|returns|type|of)",
             },
         ],
 

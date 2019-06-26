@@ -3,7 +3,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import deepForceUpdate from "react-deep-force-update";
 import queryString from "query-string";
-import gql from "graphql-tag";
 import { createPath, Location } from "history";
 import App from "./components/App";
 import history from "./history";
@@ -158,24 +157,3 @@ if (module.hot) {
         onLocationChange(currentLocation);
     });
 }
-
-// This is a demonstration of how to mutate the client state of apollo-link-state.
-// If you don't need the networkStatus, please erase below lines.
-function onNetworkStatusChange() {
-    apolloClient.mutate({
-        mutation: gql`
-            mutation updateNetworkStatus($isConnected: Boolean) {
-                updateNetworkStatus(isConnected: $isConnected) @client {
-                    isConnected
-                }
-            }
-        `,
-        variables: {
-            isConnected: navigator.onLine,
-        },
-    });
-}
-
-window.addEventListener("online", onNetworkStatusChange);
-window.addEventListener("offline", onNetworkStatusChange);
-onNetworkStatusChange();

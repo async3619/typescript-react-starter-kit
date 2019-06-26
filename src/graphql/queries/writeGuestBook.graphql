@@ -1,0 +1,9 @@
+mutation writeGuestBook($data: WriteGuestBookInput!) {
+    writeGuestBook(data: $data) {
+        id
+        name
+        content
+        createdAt
+        updatedAt
+    }
+}

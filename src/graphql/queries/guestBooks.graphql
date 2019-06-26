@@ -1,0 +1,9 @@
+query guestBooks($index: Int!, $count: Int!) {
+    guestBooks(index: $index, count: $count) {
+        id
+        name
+        content
+        createdAt
+        updatedAt
+    }
+}

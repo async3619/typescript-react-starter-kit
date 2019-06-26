@@ -8,14 +8,15 @@ import ReactDOM from "react-dom/server";
 import PrettyError from "pretty-error";
 import { ApolloServer } from "apollo-server-express";
 import { getDataFromTree } from "react-apollo";
+
 import createApolloClient from "./graphql/createApolloClient/createApolloClient.server";
 import App from "./components/App";
 import Html from "./components/Html";
 import { ErrorPageWithoutStyle } from "./routes/error/ErrorPage";
 import errorPageStyle from "./routes/error/ErrorPage.css";
 import router from "./router";
-import models from "./data/models";
 import buildSchema from "./graphql";
+import createConnection from "./data";
 
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 // @ts-ignore
@@ -173,7 +174,7 @@ app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
 //
 // Launch the server
 // -----------------------------------------------------------------------------
-const promise = models.sync().catch((err: Error) => console.error(err.stack));
+const promise = createConnection().catch((err: Error) => console.error(err.stack));
 if (!module.hot) {
     promise.then(() => {
         app.listen(config.port, () => {
