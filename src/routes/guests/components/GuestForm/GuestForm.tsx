@@ -3,9 +3,9 @@ import React from "react";
 import { compose } from "react-apollo";
 import withStyles from "isomorphic-style-loader/withStyles";
 
-import s from "./GuestForm.scss";
+import { GuestBookItem, withWriteGuestBook, WriteGuestBookMutationFn } from "@generated/graphql.client";
 
-import { GuestBookItem, withWriteGuestBook, WriteGuestBookMutationFn } from "../../../../__generated__/graphql.client";
+import s from "./GuestForm.scss";
 
 interface Props {
     writeGuestBook: WriteGuestBookMutationFn;

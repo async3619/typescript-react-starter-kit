@@ -3,7 +3,7 @@
 module.exports = {
     parser: "@typescript-eslint/parser",
 
-    extends: ["airbnb", "plugin:css-modules/recommended", "prettier", "prettier/react"],
+    extends: ["airbnb", "plugin:css-modules/recommended", "plugin:import/typescript", "prettier", "prettier/react"],
 
     plugins: ["@typescript-eslint/eslint-plugin", "css-modules", "prettier"],
 

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import useStyles from "isomorphic-style-loader/useStyles";
-import s from "./NotFound.css";
+import s from "./NotFound.scss";
 
 type PropTypes = {
     title: string;

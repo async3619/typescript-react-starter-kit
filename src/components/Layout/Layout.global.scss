@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 /*
  * normalize.css is imported in JS file.
@@ -124,11 +124,11 @@ textarea {
     }
 
     a[href]::after {
-        content: ' (' attr(href) ')';
+        content: " (" attr(href) ")";
     }
 
     abbr[title]::after {
-        content: ' (' attr(title) ')';
+        content: " (" attr(title) ")";
     }
 
     /*
@@ -136,9 +136,9 @@ textarea {
    * or use the `javascript:` pseudo protocol
    */
 
-    a[href^='#']::after,
-    a[href^='javascript:']::after {
-        content: '';
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "";
     }
 
     pre,
