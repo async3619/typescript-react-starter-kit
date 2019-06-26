@@ -1,7 +1,7 @@
 import { Arg, Args, Mutation, Query, Resolver } from "type-graphql";
 import bcrypt from "bcrypt";
 
-import Guest from "@models/guest.model";
+import Guest from "./guest.entity";
 
 import GuestBookItem from "./guests.model";
 import WriteGuestBookInput from "./guests.input";

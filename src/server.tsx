@@ -9,14 +9,14 @@ import PrettyError from "pretty-error";
 import { ApolloServer } from "apollo-server-express";
 import { getDataFromTree } from "react-apollo";
 
-import createApolloClient from "./graphql/createApolloClient/createApolloClient.server";
+import createApolloClient from "./data/createApolloClient/createApolloClient.server";
 import App from "./components/App";
 import Html from "./components/Html";
 import { ErrorPageWithoutStyle } from "./routes/error/ErrorPage";
 import errorPageStyle from "./routes/error/ErrorPage.css";
 import router from "./router";
-import buildSchema from "./graphql";
-import createConnection from "./data";
+import buildSchema from "./data/graphql";
+import createConnection from "./data/database";
 
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 // @ts-ignore

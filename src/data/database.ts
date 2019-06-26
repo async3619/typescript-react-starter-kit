@@ -1,7 +1,7 @@
 import { createConnection as createTypeORMConnection } from "typeorm";
 import path from "path";
 
-import Guest from "@models/guest.model";
+import Guest from "./guests/guest.entity";
 
 export default async function createConnection() {
     if (global.connection) {

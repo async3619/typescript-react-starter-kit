@@ -1,6 +1,6 @@
 import { buildSchemaSync } from "type-graphql";
 
-import LoremResolver from "./lorem.resolver";
+import LoremResolver from "./lorem/lorem.resolver";
 import GuestsResolver from "./guests/guests.resolver";
 
 export default function buildSchema() {
