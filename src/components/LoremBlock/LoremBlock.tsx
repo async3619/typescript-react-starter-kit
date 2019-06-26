@@ -2,7 +2,7 @@ import React from "react";
 import useStyles from "isomorphic-style-loader/useStyles";
 import classNames from "classnames";
 
-import { withLorem } from "../../__generated__/graphql.client";
+import { withLorem } from "@generated/graphql.client";
 
 import s from "./LoremBlock.scss";
 

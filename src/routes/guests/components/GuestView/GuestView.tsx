@@ -2,7 +2,7 @@ import React from "react";
 import useStyles from "isomorphic-style-loader/useStyles";
 import moment from "moment";
 
-import { GuestBookItem } from "../../../../__generated__/graphql.client";
+import { GuestBookItem } from "@generated/graphql.client";
 
 import s from "./GuestView.scss";
 

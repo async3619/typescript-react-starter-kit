@@ -290,8 +290,8 @@ const config = {
             "@components": resolvePath("src", "components"),
             "@routes": resolvePath("src", "routes"),
             "@res": resolvePath("res"),
-            "@queries": resolvePath("src", "graphql", "queries"),
-            "@models": resolvePath("src", "data", "models"),
+            "@queries": resolvePath("src", "data", "queries"),
+            "@generated": resolvePath("src", "__generated__"),
         },
     },
 

@@ -3,9 +3,9 @@ import { compose } from "react-apollo";
 import withStyles from "isomorphic-style-loader/withStyles";
 import classNames from "classnames";
 
-import GuestView from "../GuestView";
+import { GuestBookItem, GuestBooksProps, withGuestBooks } from "@generated/graphql.client";
 
-import { GuestBookItem, GuestBooksProps, withGuestBooks } from "../../../../__generated__/graphql.client";
+import GuestView from "../GuestView";
 
 import s from "./GuestList.scss";
 
