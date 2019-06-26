@@ -218,7 +218,8 @@
         "render": "ts-node --project tsconfig.node.json tools/run render",
         "serve": "ts-node --project tsconfig.node.json tools/run runServer",
         "start": "ts-node --project tsconfig.node.json tools/run start",
-        "codegen": "graphql-codegen --config codegen.yml",
+        "schema": "ts-node --project tsconfig.node.json tools/run schema",
+        "codegen": "yarn run schema && graphql-codegen --config codegen.yml",
         "codegen-watch": "graphql-codegen --config codegen.yml --watch"
     }
 }

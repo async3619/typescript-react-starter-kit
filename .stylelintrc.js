@@ -13,6 +13,7 @@ module.exports = {
 
     rules: {
         indentation: 4,
+        "declaration-empty-line-before": null,
 
         "property-no-unknown": [
             true,
