@@ -24,7 +24,7 @@ module.exports = {
     // collectCoverage: false, // [boolean]
 
     // https://facebook.github.io/jest/docs/en/configuration.html#collectcoveragefrom-array
-    collectCoverageFrom: ["src/**/*.{ts,tsx,js,jsx}", "!**/node_modules/**", "!**/vendor/**"],
+    collectCoverageFrom: ["src/**/*.{ts,tsx,js,jsx}", "!**/node_modules/**", "!**/vendor/**", "!**/ts-build/**"],
 
     // https://facebook.github.io/jest/docs/en/configuration.html#coveragedirectory-string
     coverageDirectory: "<rootDir>/coverage", // [string]
