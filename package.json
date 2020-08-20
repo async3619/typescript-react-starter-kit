@@ -22,7 +22,7 @@
         "apollo-link-schema": "^1.2.3",
         "apollo-server": "^2.6.3",
         "apollo-server-express": "^2.6.3",
-        "bcrypt": "^3.0.6",
+        "bcrypt": "^5.0.0",
         "body-parser": "^1.19.0",
         "class-validator": "^0.9.1",
         "classnames": "^2.2.6",
